@@ -1,3 +1,6 @@
+import os
+#os.environ["RAYLIB_BIN_PATH"] = "./lib/"
+
 from game.director import Director
 from game.input_service import InputService
 from game.output_service import OutputService

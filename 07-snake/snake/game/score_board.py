@@ -18,17 +18,44 @@ class ScoreBoard(Actor):
             self (Score): an instance of Score.
         """
         super().__init__()
-        self._points = 0
+        self._score = 0
         position = Point(1, 0)
         self.set_position(position)
-        self.set_text(f"Score: {self._points}")
+        self.set_text(f"Score: {self._score}")
+
+    def calculate_points(word):
+        """Calculates the amount of points for each given word.
+        
+        Args:
+            self (Score): An instance of Score.
+            points (integer): The amount of points for the given word.
+        """
+        points = 0
+
+        for i in range(len(word)):
+            points+= 1
+
+        return points
     
-    def add_points(self, points):
+    def add_points(self, word):
         """Adds the given points to the running total and updates the text.
         
         Args:
             self (Score): An instance of Score.
             points (integer): The points to add.
         """
-        self._points += points
-        self.set_text(f"Score: {self._points}")
+        points = self.calculate_points(word)
+        self._score += points
+        self.set_text(f"Score: {self._score}")
+
+    def subtract_points(self, word):
+        """Subtracts the given points from the running total and updates the text.
+        
+        Args:
+            self (Score): An instance of Score.
+            points (integer): The points to add.
+        """
+        points = self.calculate_points(word)
+        self._score -= points
+        self.set_text(f"Score: {self._score}")
+ 
